@@ -14,6 +14,7 @@ const {
   PORT,
   RELEASE,
   PASSWORD,
+  WG_HOST,
 } = require('../config');
 
 module.exports = class Server {
@@ -135,8 +136,8 @@ module.exports = class Server {
         return WireGuard.updateClientAddress({ clientId, address });
       }))
 
-      .listen(PORT, () => {
-        debug(`Listening on http://0.0.0.0:${PORT}`);
+      .listen(PORT, WG_HOST, () => {
+        debug(`Listening on http://${WG_HOST}:${PORT}`);
       });
   }
 
